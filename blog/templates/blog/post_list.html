@@ -1,30 +1,28 @@
+{% load staticfiles %}
+
 <html>
     <head>
         <title>Iamdjango's Blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link rel="stylesheet" href="{% static '/dynamic/css/aerolite.sass' %}">
+
     </head>
     <body>
         <div>
             <h1><a href="">Iamdjango's Blog</a></h1>
         </div>
 
-        <!--<div>
-            <p>published: 14.06.2016, 12:14</p>
-            <h2><a href="">My First Blog Post</a></h2>
-            <p>This is a test blog. This is a test blog.. Thank you for posting test blog.This is a test blog. This is a test blog.. Thank you for posting test blog.</p>
-        </div>
-
-        <div>
-            <p>published: 8,6.2016:14</p>
-            <h2><a href="">My Second Blog Post</a></h2>
-            <p>This is a test blog. This is a test blog.. Thank you for posting test blog.This is a test blog. This is a test blog.. Thank you for posting test blog.</p>
-        </div>-->
+        <div class="container">
         {% for post in posts %}
             <div>
+               <!-- Post.objects.filter(published_date__lte= timezone.now()).order_by('published_date')-->
                 <p>Published Date: {{post.published_date}}</p>
                 <h1><a href = "">{{post.title}}</a></h1>
                 <p>{{post.text | linebreaks }}</p>
             </div>
         {% endfor %}
-
+        </div>
     </body>
 </html>
