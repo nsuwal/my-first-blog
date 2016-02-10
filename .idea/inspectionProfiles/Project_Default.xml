@@ -12,6 +12,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="blog.forms.django" />
+          <option value="blog.views.django" />
         </list>
       </option>
     </inspection_tool>
