@@ -1,28 +1,17 @@
-{% load staticfiles %}
+{% extends 'blog/base.html' %}
+{% block content%}
+{% for post in posts %}
+    <div class="post">
+        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaks }}</p>
 
-<html>
-    <head>
-        <title>Iamdjango's Blog</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-        <link rel="stylesheet" href="{% static '/dynamic/css/aerolite.sass' %}">
+        <div class="date">
+            <p>Published On: {{ post.published_date }}</p>
+        </div
+    </div>
+{% endfor %}
+{% endblock %}
 
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Iamdjango's Blog</a></h1>
-        </div>
 
-        <div class="container">
-        {% for post in posts %}
-            <div>
-               <!-- Post.objects.filter(published_date__lte= timezone.now()).order_by('published_date')-->
-                <p>Published Date: {{post.published_date}}</p>
-                <h1><a href = "">{{post.title}}</a></h1>
-                <p>{{post.text | linebreaks }}</p>
-            </div>
-        {% endfor %}
-        </div>
-    </body>
-</html>
+
+
